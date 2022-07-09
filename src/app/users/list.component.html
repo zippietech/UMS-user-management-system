@@ -1,0 +1,38 @@
+﻿<h1>Users</h1>
+<button mat-raised-button color="primary" routerLink="add">Add User</button>
+<table class="table table-striped mt-2">
+    <thead>
+        <tr>
+            <th style="width: 30%">First Name</th>
+            <th style="width: 30%">Last Name</th>
+            <th style="width: 30%">User Name</th>
+            <th style="width: 10%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td style="white-space: nowrap">
+                <button mat-raised-button color="primary" routerLink="edit/{{user.id}}" class="mr-2">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-raised-button color="warn" (click)="deleteUser(user.id)" [disabled]="user.isDeleting">
+                    <mat-icon *ngIf="!user.isDeleting">delete</mat-icon>
+                    <span *ngIf="user.isDeleting" class="spinner-border spinner-border-sm"></span>
+                </button>
+                <!-- <button (click)="deleteUser(user.id)" class="btn btn-sm btn-danger btn-delete-user"
+                    [disabled]="user.isDeleting">
+                    <span *ngIf="user.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!user.isDeleting">Delete</span>
+                </button> -->
+            </td>
+        </tr>
+        <tr *ngIf="!users">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>

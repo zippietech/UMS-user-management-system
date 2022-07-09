@@ -1,0 +1,33 @@
+﻿<div class="p-4">    
+    <div class="container">
+        <div>
+            <h1>User Profile</h1>
+            <button mat-raised-button color="primary" routerLink="/users" *ngIf="userData && userData.isAdmin">All Users</button>
+        </div>
+        <!-- <button mat-raised-button color="primary" class="float-right">Users</button> -->
+        <mat-card *ngIf="userData" class="mt-2">
+            <mat-card-header class="main-header">
+                <mat-card-title class="header-name">
+                    <span>User Information</span>
+                    <button mat-mini-fab color="primary" class="float-right mt-n2" (click)="openDialog()">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <!-- <button mat-raised-button class="float-right">Edit</button> -->
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-header class="mt-3">
+                <mat-card-subtitle class="mb-2">Name:</mat-card-subtitle>
+                <mat-card-title>{{userData.firstName}} {{userData.lastName}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-header>
+                <mat-card-subtitle class="mb-2">UserName:</mat-card-subtitle>
+                <mat-card-title>{{userData.email}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-header>
+                <mat-card-subtitle class="mb-2">Password:</mat-card-subtitle>
+                <mat-card-title>***</mat-card-title>
+            </mat-card-header>
+        </mat-card>
+        <!-- <p><a routerLink="/users">Manage Users</a></p> -->
+    </div>
+</div>
